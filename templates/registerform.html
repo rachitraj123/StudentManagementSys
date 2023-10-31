@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Register</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        body {
+            background-color: #f8f9fa; /* Set your desired background color */
+            height: 100vh;
+            width: 100%;
+        }
+        .centered-form {
+            position: absolute !important;
+            top: 15%;
+            left: 25%;
+        }
+
+    </style>
+</head>
+<body class="bg-body container-fluid position-relative p-0 m-0">
+    <form action="" method="post" class="row centered-form bg-gradient shadow w-25 rounded border p-4 w-50">
+        {% csrf_token %}
+        <!-- <div class="col-12 mt-4">
+            <label for="Username">Username</label>
+            <input type="text" class="form-control px-2 mt-1" id="Username" name="username">
+        </div>
+        <div class="col-12 mt-4">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control px-2 mt-1" id="email" name="email">
+        </div>
+        <div class="col-12 mt-4">
+            <label for="password">Password</label>
+            <input type="password" class="form-control px-2 mt-1" id="password" name="password">
+        </div>
+        <div class="col-12 mt-4">
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" class="form-control px-2 mt-1" id="confirmpassword" name="confirmpassword">
+        </div>-->
+        <h1 class="display-6 text-center text-info bg-light border p-4 mt-4">Register Here!!</h1>
+        {% for field in form %}
+            <div class="row mt-3">
+                {{field.label}}
+                {{field}}
+            </div>
+            {% if field.errors %}
+                <ul>
+                    {% for error in  field.errors %}
+                    <li class="alert-danger text-danger p-1 m-1" style="list-style: none;">{{ error }}</li>
+                    {% endfor %}                
+                </ul>
+            {% endif %}
+        {% endfor %}
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-primary" name="register">Register</button>
+        </div>
+        <div class="col-12 mt-4 d-flex justify-content-end w-100 align-items-center">
+            <p class="text-info">Already have an account??</p>
+            <a href="{% url 'studentadd:login' %}" class="btn btn-primary" name="login">login</a>
+        </div>
+    </form>
+</body>
+</html>
