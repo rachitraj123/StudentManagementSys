@@ -83,8 +83,8 @@ def Login(request):
         user = authenticate(username = request.POST.get('Username'),password = request.POST.get('password'))
         if user is not None:
             login(request,user)
-            return redirect('studentadd:index')
             messages.success('user logger in succesfully!!!')
+            return redirect('studentadd:index')
         else:
             error_message = 'User not found!!'
             return render(request,'login.html',{
