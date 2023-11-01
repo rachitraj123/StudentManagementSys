@@ -31,7 +31,9 @@ SECRET_KEY = 'django-insecure-5ia$z0&-lwauchlt2c8^0@g6bzbmree7w2d@*(9y%s8i!7#efa
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
 
 # Application definition
 
