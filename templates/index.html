@@ -28,12 +28,16 @@
     <div class="container rounded border bg-light shadow mt-4 p-4">
         <div class=" d-flex  w-100  align-items-center  justify-content-between">
             <a href="" class="btn btn-primary btn-sm text-center" data-bs-toggle="modal" data-bs-target="#AddStudentModal">Add a new student</a>
-            <a href="{% url 'studentadd:logout' %}" class="btn btn-primary btn-sm text-center">logout</a>
             <form action="" method="post" class="form-label d-flex align-items-center col-md-7">
                 {% csrf_token %}
                 <input type="search" class="form-control" placeholder="search by email" name="data">
                 <button type="submit" class="btn btn-success mx-3" value="Search" name="read">Search</button>
             </form>
+            {% if user.is_authenticated %}
+              <a href="{% url 'studentadd:logout' %}" class="btn btn-primary btn-sm text-center">logout</a>
+            {% else %} 
+            <a href="{% url 'studentadd:login' %}" class="btn btn-primary btn-sm text-center">login</a>
+            {% endif %}
             <div class="modal fade w-100 p-4" id="AddStudentModal" tabindex="-1" aria-labelledby="AddStudentModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <form action="" class="rounded border bg-light p-2" method="post">
