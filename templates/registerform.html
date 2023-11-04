@@ -22,12 +22,21 @@
             top: 15%;
             left: 25%;
         }
-
+        @media screen and (max-width:780px){
+            .centered-form{
+                width: 100% !important;
+                align-self: center !important;
+            }
+            body{
+                width: 100vw !important;
+                display: flex !important;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
-<body class="bg-body container-fluid position-relative p-0 m-0">
+<body class="bg-body container-fluid p-0 m-0">
     <form action="" method="post" class="row centered-form bg-gradient shadow w-25 rounded border p-4 w-50">
-        {% csrf_token %}
         <!-- <div class="col-12 mt-4">
             <label for="Username">Username</label>
             <input type="text" class="form-control px-2 mt-1" id="Username" name="username">
